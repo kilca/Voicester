@@ -85,9 +85,9 @@ def combo_change(eventObject):
         effect_val.configure(from_=-10)
         effect_val.configure(to=10)
     if (comboval == "lag"):
-        settings.effect = ef.pitch_effect
+        settings.effect = ef.lag_effect
         effect_val.configure(from_=0)
-        effect_val.configure(to=20)
+        effect_val.configure(to=3)
     if (comboval == "saturation"):
         settings.effect = ef.saturation_effect
         effect_val.configure(from_=0)
@@ -161,13 +161,20 @@ tab_parent.grid(row=0, column=0, columnspan=1, rowspan=5)
 
 #-------------------TAB 1 ----------------------
 
-status = tk.Label(tab1, text="aaaaaaaa", borderwidth=2, relief="groove")
+status = tk.Label(tab1, text="-----------", borderwidth=2, relief="groove")
 status.grid(row=1, column = 1)
+
+
+input_label = tk.Label(tab1, text="INPUT", borderwidth=2, relief="groove")
+input_label.grid(row=2, column = 0,sticky='E')
 
 input_combo = ttk.Combobox(tab1, state='readonly')
 input_combo["values"] = tuple('['+str(i)+']'+' '+device_li[i]['name'] for i in range(len(device_li)))
 input_combo.current(0)
 input_combo.grid(column=1, row=2, sticky='NW')
+
+output_label = tk.Label(tab1, text="OUTPUT", borderwidth=2, relief="groove")
+output_label.grid(row=3, column = 0,sticky='E')
 
 output_combo = ttk.Combobox(tab1, state='readonly')
 output_combo["values"] = tuple('['+str(i)+']'+' '+device_li[i]['name'] for i in range(len(device_li)))
@@ -175,17 +182,23 @@ output_combo.current(1)
 output_combo.grid(column=1, row=3, sticky='NW')
 
 button_start = tk.Button(tab1, text="START", command=press_button_start)
-button_start.grid(column=1, row=4, sticky='NW')
+button_start.grid(column=1, row=4)
 
 button_stop = tk.Button(tab1, text="STOP", command=press_button_stop)
-button_stop.grid(column=1, row=5, sticky='NW')
+button_stop.grid(column=1, row=5)
 
+effect_label = tk.Label(tab1, text="MIC EFFECT", borderwidth=2, relief="groove")
+effect_label.grid(row=6, column = 0,sticky='E')
 
 effect_combo = ttk.Combobox(tab1, state='readonly')
 effect_combo.bind("<<ComboboxSelected>>", combo_change)
 effect_combo["values"] = ["none","volume","pitch","lag","saturation","noise","trip","crackle"]
 effect_combo.current(0)
 effect_combo.grid(column=1, row=6, sticky='NW')
+
+
+effect_label = tk.Label(tab1, text="EFFECT INTENSITY", borderwidth=2, relief="groove")
+effect_label.grid(row=7, column = 0,sticky='E')
 
 effect_val = tk.Scale(tab1, from_=0, to=100, orient=tk.HORIZONTAL,command=slider_change)
 effect_val.grid(column=1, row=7, sticky='NW')
