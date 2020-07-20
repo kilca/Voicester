@@ -109,17 +109,6 @@ def combo_change(eventObject):
 def slider_change(truc):
     settings.val = effect_val.get()
 
-   
-settings.init()
-
-
-device_li = get_device_list()
-
-root = tk.Tk()
-root.title("Voicester")
-root.geometry("400x300")
-
-
 
 def on_closing():
     
@@ -135,6 +124,17 @@ def on_closing():
     settings.save()
     
     root.destroy()
+   
+settings.init()
+
+
+device_li = get_device_list()
+
+root = tk.Tk()
+root.title("Voicester")
+root.geometry("400x300")
+
+
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 
@@ -179,11 +179,6 @@ button_start.grid(column=1, row=4, sticky='NW')
 
 button_stop = tk.Button(tab1, text="STOP", command=press_button_stop)
 button_stop.grid(column=1, row=5, sticky='NW')
-
-'''
-button_playSound = tk.Button(tab1, text="PLAY SOUND", command=click_playSound)
-input_combo.grid(column=0, row=0, sticky='NW')
-'''
 
 
 effect_combo = ttk.Combobox(tab1, state='readonly')

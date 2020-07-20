@@ -58,9 +58,7 @@ def init():
 def save():
     print("input : ",INPUT)
     try:
-        saved_dict = {"languages": ["English", "Fench"],
-        "married": True,
-        "age": 32
+        saved_dict = {"languages": ["English", "Fench"]
         }
         song_array = []
         for i in range(0,9):
