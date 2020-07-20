@@ -8,3 +8,5 @@ Currently work only with wav file.
 wav file from browser supported but it will play very low quality.
 
 This program require to have a virtual mics like VBCable
+
+![Preview Image](preview.png)
